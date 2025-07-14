@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -37,6 +36,20 @@
       font-size: 2rem;
       margin: 1rem 0;
     }
+    #installBtn {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: none; /* Oculto hasta que se pueda instalar */
+    }
+    #installBtn:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -53,13 +66,38 @@
       ➤ En iPhone: toca el icono de compartir <strong>🔗</strong> y elige<br>
       <strong>“Agregar a pantalla de inicio”</strong>.
     </p>
+    <button id="installBtn">📲 Instalar</button>
   </div>
 
   <script>
+    // Redirigir si ya está instalada
     if (window.matchMedia('(display-mode: standalone)').matches) {
-      // App está instalada
       window.location.href = "https://gratis-vase-6972.glide.page";
     }
+
+    // Manejar el botón de instalación
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'inline-block';
+
+      installBtn.addEventListener('click', () => {
+        installBtn.disabled = true;
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(choiceResult => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('App instalada');
+          } else {
+            console.log('Instalación cancelada');
+          }
+          installBtn.disabled = false;
+          deferredPrompt = null;
+        });
+      });
+    });
   </script>
 
 </body>
