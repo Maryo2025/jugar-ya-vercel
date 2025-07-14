@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instala The Colors of English</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to right, #f9c5d1, #9795ef);
+      height: 100vh;
+      text-align: center;
+    }
+    .message {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      max-width: 400px;
+    }
+    .message h1 {
+      color: #6a11cb;
+    }
+    .instructions {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #333;
+    }
+    .emoji {
+      font-size: 2rem;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="message" id="mensaje">
+    <h1>Bienvenido a The Colors of English</h1>
+    <div class="emoji">📱⛔</div>
+    <p class="instructions">
+      Para jugar debes <strong>instalar la app</strong> en tu dispositivo.
+      <br><br>
+      ➤ En Android: toca los tres puntos (⋮) arriba a la derecha y selecciona<br>
+      <strong>“Agregar a la pantalla principal”</strong>.
+      <br><br>
+      ➤ En iPhone: toca el icono de compartir <strong>🔗</strong> y elige<br>
+      <strong>“Agregar a pantalla de inicio”</strong>.
+    </p>
+  </div>
+
+  <script>
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      // App está instalada
+      window.location.href = "https://gratis-vase-6972.glide.page";
+    }
+  </script>
+
+</body>
+</html>
